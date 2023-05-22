@@ -1,0 +1,36 @@
+ml:
+  config:
+    adam_lr: 0.01
+    assets:
+      - SANHOK
+      - MIRAMAR
+    batch_size: 1024
+    hidden_dim: 25
+    n_batches_per_epoch: 50
+    n_epochs: 2000
+    num_lstm_layers: 4
+    droupout_percent: 30
+    sample_top_features: # comment to disable
+      n_top_features: 75
+      feature_importance_path: "feature_importance.csv"
+    scheduler:
+      type: 'exponential'
+      scheduler_step: 25
+      scheduler_gamma: 0.95
+#    scheduler:
+#      type: 'linear'
+  path:
+    'model/ml_regressor'
+  last_epoch_path:
+    'model/ml_regressor_last_epoch'
+catboost:
+  config:
+    assets:
+      - SANHOK
+      - MIRAMAR
+    n_iterations: 10000
+    feature_importance:
+      do_save: true
+      path: "feature_importance.csv"
+  path:
+    'model/catboost_regressor'

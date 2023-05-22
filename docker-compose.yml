@@ -1,0 +1,8 @@
+version: "2.2"
+services:
+  main:
+    build: ./docker
+    volumes:
+      - ./galqiwi.zip:/galqiwi.zip
+      - ./data_by_days:/data_by_days
+    command: bash -c "unzip galqiwi.zip && cp docker/pipeline.py ./ && python3 pipeline.py --mode train"
